@@ -19,7 +19,7 @@ SearchBookByTitle brojkite odat spored ovaa
         return results; //11
     } //12
 
-    <img width="2112" height="1320" alt="searchbook" src="https://github.com/user-attachments/assets/bf085c34-e863-4e53-9af2-195a7a374d95" />
+<img width="2112" height="1320" alt="searchbook" src="https://github.com/user-attachments/assets/bf085c34-e863-4e53-9af2-195a7a374d95" />
 
 borrowBook e spored ovaa
     public void borrowBook(String title, String author) { // 1
