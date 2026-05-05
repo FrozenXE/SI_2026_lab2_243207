@@ -1,7 +1,7 @@
-# -SI_2026_lab2_243207
-# Втора лабораториска вежба по Софтверско инженерство
+# SI_2026_lab2_243207
+# Vtora Laboratoriska po Softversko inzinerstvo
 
-**Јован Митрев, Индекс: 243207**
+*Јован Митрев, Индекс: 243207*
 
 ---
 
@@ -70,9 +70,9 @@ Ciklomatcka kompleksnost e presmetana kako V(G) = E - N + 2
 | **2. "Clean Code"** | `"Clean Code"` | 2, 4, 5, 6, 7, 8, 9, 11 | Uspesno naogjanje i vracanje na lista. |
 | **3. "Nepostoecka"** | `"Nepostoecka"` | 5, 6, 8, 9, 10 | Da vrati `null` ako nema rezultat. |
 
-*   **Slucaj 1**: Go aktivira `throw` за невалиден излез.
-*   **Slucaj 2**: Vleguva vo ciklusot, go ispolnuva `if` uslovot i dodava kniga vo rezultatite.
-*   **Slucaj 3**: Go pominuva ciklusot bez da dodade nisto i ja aktivira `true` grankata na `results.isEmpty()`.
+*   Slucaj 1: Go aktivira `throw` за невалиден излез.
+*   Slucaj 2: Vleguva vo ciklusot, go ispolnuva `if` uslovot i dodava kniga vo rezultatite.
+*   Slucaj 3: Go pominuva ciklusot bez da dodade nisto i ja aktivira `true` grankata na `results.isEmpty()`.
 
 **Minimalniot broj na test slucaji e 3**, bidejki mora da se zavrsat site 3 razlicni zavrsetoci (`throw`, `return null` и `return results`).
 
@@ -87,11 +87,11 @@ Ciklomatcka kompleksnost e presmetana kako V(G) = E - N + 2
 | **3. Successful** | `("Hobbit", "Tolkien")` | 2 (False), 5 (True), 6 (True) | Uspesno naogjanje i iznajmuvanje na slobodna kniga. |
 | **4. Borrowed** | `("1984", "Orwell")` | 2 (False), 5 (True), 6 (False) | Da frli `RuntimeException` bidejki knigata e veke iznajmena. |
 
-### Објаснување:
-*   **Slucaj 1**: Go aktivira `throw` uslovot uste na samiot pocetok poradi nevalidni parametri.
-*   **Slucaj 2**: Go pominuva celiot ciklus (`books`) bez da najde sovpagjanje, po sto ja aktivira grankata nadvor od ciklusot za "Book not found".
-*   **Slucaj 3**: Ja naogja knigata (True na prviot `if` vo ciklusot) и ja naogja kako slobodna (True na vtoriot `if`), so sto uspesno ja iznajmuva.
-*   **Slucaj 4**: Ja naogja knigata (True na prviot `if`), no ja aktivira `False` гранката на вториот `if` бидејќи книгата е веќе претходно изнајмена.
+### Objasnuvanje:
+*   Slucaj 1 Go aktivira `throw` uste na samiot pocetok poradi nevalidni parametri.
+*   Slucaj 2: Go pominuva celiot ciklus (`books`) bez da najde sovpagjanje, po sto ja aktivira grankata nadvor od ciklusot za "Book not found".
+*   Slucaj 3: Ja naogja knigata (True na prviot `if` vo ciklusot) и ja naogja kako slobodna (True na vtoriot `if`), so sto uspesno ja iznajmuva.
+*   Slucaj 4: Ja naogja knigata (True na prviot `if`), no ja aktivira `False` гранката на вториот `if` бидејќи книгата е веќе претходно изнајмена.
 
 **Minimalniot broj na test slucaji e 4.**
 ---
@@ -106,3 +106,13 @@ Ciklomatcka kompleksnost e presmetana kako V(G) = E - N + 2
 | **searchBookByTitle** | `Match=True`, `Borrowed=False` | **T && T** | Found |
 | `(match && !borrowed)` | `Match=True`, `Borrowed=True` | **T && F** | Not Found |
 | | `Match=False`, `Borrowed=X` | **F && X** | Not Found |
+
+### Објаснување:
+* Za multiple Condition kaj || (or) dovolno e da se pokrijat slucaji kade prviot e tocen, vtorniot tocen, i dvata netocni.
+* Za && (and) se testiraat slucaji kade dvata se tocni prviot tocen a vtoriot ne i slucaj kade prviot e netocen.
+
+
+## Minimalen broj na test slucaji:
+* Za borrowBook: 3
+* Za searchBookByTitle: 3
+
