@@ -50,17 +50,13 @@ public class SI2026Lab2Test {
     void borrowBookMultipleConditionTest() {
         Library library = new Library();
 
-        // Услов: if (title.isEmpty() || author.isEmpty())
-        // Комбинации: T || X, F || T, F || F
-
-        // 1. T || X (Првиот услов е True, вториот не е важен)
+        // 1. T || X 
         assertThrows(IllegalArgumentException.class, () -> library.borrowBook("", "Author"));
 
-        // 2. F || T (Првиот е False, вториот е True)
+        // 2. F || T 
         assertThrows(IllegalArgumentException.class, () -> library.borrowBook("Title", ""));
 
-        // 3. F || F (Двата се False - валиден влез)
-        // Додаваме книга за да не фрли "Book not found" туку да помине низ проверка
+        // 3. F || F 
         library.addBook(new Book("Title", "Author", "Genre"));
         assertDoesNotThrow(() -> library.borrowBook("Title", "Author"));
     }
@@ -68,8 +64,6 @@ public class SI2026Lab2Test {
     @Test
     void searchBookMultipleConditionTest() {
         Library library = new Library();
-
-        // Uslov: if (book.getTitle().equalsIgnoreCase(title) && !book.isBorrowed())
 
         // 1. T && T
         library.addBook(new Book("Clean Code", "Robert", "Dev"));
