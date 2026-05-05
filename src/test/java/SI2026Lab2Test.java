@@ -7,7 +7,7 @@ public class SI2026Lab2Test {
     @Test
     void searchBookEveryStatementTest() {
         Library library = new Library();
-        library.addBook(new Book("Clean Code Test", "Jovan Mitrev", "Programming"));
+        library.addBook(new Book("Clean Code", "Jovan Mitrev", "Programming"));
 
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> {
             library.searchBookByTitle("");
