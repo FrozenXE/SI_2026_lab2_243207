@@ -8,7 +8,7 @@
 ## 2. Control Flow Graph
 
 ### Функција `searchBookByTitle`
-```java
+```
 public List<Book> searchBookByTitle(String title) { //1
     if (title.isEmpty()){        //2
         throw new IllegalArgumentException("Invalid title"); //3 
@@ -30,7 +30,7 @@ public List<Book> searchBookByTitle(String title) { //1
 ---
 
 ### Функција `borrowBook`
-```java
+```
 borrowBook e spored ovaa
     public void borrowBook(String title, String author) { // 1
         if (title.isEmpty() || author.isEmpty()){ //2
@@ -62,36 +62,34 @@ Ciklomatcka kompleksnost e presmetana kako V(G) = E - N + 2
 
 ---
 
-## Prasanje 6: Every Statement (searchBookByTitle)
+# Prasanje 6: Every Statement (searchBookByTitle)
 
 | Test slucaj | Vlez (`title`) | Pokrieni linii | Cel na testot |
 | :--- | :--- | :--- | :--- |
-| **1. ""** | `""` | 2, 3 | Da frli `IllegalArgumentException`. |
-| **2. "Clean Code"** | `"Clean Code"` | 2, 4, 5, 6, 7, 8, 9, 11 | Uspesno naogjanje i vracanje na lista. |
-| **3. "Nepostoecka"** | `"Nepostoecka"` | 5, 6, 8, 9, 10 | Da vrati `null` ako nema rezultat. |
+| **1. ""** | `""` | 2, 3 | Da frli IllegalArgumentException. |
+| **2. "Clean Code"* | "Clean Code" | 2, 4, 5, 6, 7, 8, 9, 11 | Uspesno naogjanje i vracanje na lista. |
+| **3. "Nepostoecka"* | "Nepostoecka" | 5, 6, 8, 9, 10 | Da vrati null ako nema rezultat. |
 
-*   Slucaj 1: Go aktivira `throw` за невалиден излез.
-*   Slucaj 2: Vleguva vo ciklusot, go ispolnuva `if` uslovot i dodava kniga vo rezultatite.
-*   Slucaj 3: Go pominuva ciklusot bez da dodade nisto i ja aktivira `true` grankata na `results.isEmpty()`.
+*   Slucaj 1: Go aktivira throw за невалиден излез.
+*   Slucaj 2: Vleguva vo ciklusot, go ispolnuva if uslovot i dodava kniga vo rezultatite.
+*   Slucaj 3: Go pominuva ciklusot bez da dodade nisto i ja aktivira true grankata na results.isEmpty().
 
-**Minimalniot broj na test slucaji e 3**, bidejki mora da se zavrsat site 3 razlicni zavrsetoci (`throw`, `return null` и `return results`).
+**Minimalniot broj na test slucaji e 3**, bidejki mora da se zavrsat site 3 razlicni zavrsetoci (throw, return null и return results).
 
----
+# Prasanje 8: Every Branch (borrowBook)
 
-## Prasanje 8: Every Branch (borrowBook)
-
-| Test slucaj | Vlez (`title`, `author`) | Pokrieni linii | Cel na testot |
+| Test slucaj | Vlez (title, author) | Pokrieni linii | Cel na testot |
 | :--- | :--- | :--- | :--- |
-| **1. Invalid input** | `("", "Author")` | 2 (True) | Da frli `IllegalArgumentException` za prazen vlez. |
-| **2. Not found** | `("Harry", "Rowling")` | 2 (False), 4.2 (False) | Da frli `RuntimeException` bidejki knigata ne postoi. |
-| **3. Successful** | `("Hobbit", "Tolkien")` | 2 (False), 5 (True), 6 (True) | Uspesno naogjanje i iznajmuvanje na slobodna kniga. |
-| **4. Borrowed** | `("1984", "Orwell")` | 2 (False), 5 (True), 6 (False) | Da frli `RuntimeException` bidejki knigata e veke iznajmena. |
+| **1. Invalid input** | ("", "Author") | 2 (True) | Da frli IllegalArgumentException za prazen vlez. |
+| **2. Not found** | ("Harry", "Rowling") | 2 (False), 4.2 (False) | Da frli RuntimeException bidejki knigata ne postoi. |
+| **3. Successful** | ("Hobbit", "Tolkien") | 2 (False), 5 (True), 6 (True) | Uspesno naogjanje i iznajmuvanje na slobodna kniga. |
+| **4. Borrowed** | ("1984", "Orwell") | 2 (False), 5 (True), 6 (False) | Da frli RuntimeException bidejki knigata e veke iznajmena. |
 
 ### Objasnuvanje:
-*   Slucaj 1 Go aktivira `throw` uste na samiot pocetok poradi nevalidni parametri.
-*   Slucaj 2: Go pominuva celiot ciklus (`books`) bez da najde sovpagjanje, po sto ja aktivira grankata nadvor od ciklusot za "Book not found".
-*   Slucaj 3: Ja naogja knigata (True na prviot `if` vo ciklusot) и ja naogja kako slobodna (True na vtoriot `if`), so sto uspesno ja iznajmuva.
-*   Slucaj 4: Ja naogja knigata (True na prviot `if`), no ja aktivira `False` гранката на вториот `if` бидејќи книгата е веќе претходно изнајмена.
+*   Slucaj 1 Go aktivira throw uste na samiot pocetok poradi nevalidni parametri.
+*   Slucaj 2: Go pominuva celiot ciklus (books) bez da najde sovpagjanje, po sto ja aktivira grankata nadvor od ciklusot za "Book not found".
+*   Slucaj 3: Ja naogja knigata (True na prviot if vo ciklusot) и ja naogja kako slobodna (True na vtoriot if), so sto uspesno ja iznajmuva.
+*   Slucaj 4: Ja naogja knigata (True na prviot if), no ja aktivira False гранката на вториот if бидејќи книгата е веќе претходно изнајмена.
 
 **Minimalniot broj na test slucaji e 4.**
 ---
